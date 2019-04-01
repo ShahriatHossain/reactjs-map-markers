@@ -1,0 +1,81 @@
+[{
+    "id": 1,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.451Z",
+    "updated_at": "2019-03-29T16:09:46.451Z"
+}, {
+    "id": 2,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.481Z",
+    "updated_at": "2019-03-29T16:09:46.481Z"
+}, {
+    "id": 3,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.508Z",
+    "updated_at": "2019-03-29T16:09:46.508Z"
+}, {
+    "id": 4,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.533Z",
+    "updated_at": "2019-03-29T16:09:46.533Z"
+}, {
+    "id": 5,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.559Z",
+    "updated_at": "2019-03-29T16:09:46.559Z"
+}, {
+    "id": 6,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.577Z",
+    "updated_at": "2019-03-29T16:09:46.577Z"
+}, {
+    "id": 7,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.594Z",
+    "updated_at": "2019-03-29T16:09:46.594Z"
+}, {
+    "id": 8,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.612Z",
+    "updated_at": "2019-03-29T16:09:46.612Z"
+}, {
+    "id": 9,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.629Z",
+    "updated_at": "2019-03-29T16:09:46.629Z"
+}, {
+    "id": 10,
+    "name": "INVALIDENSTRASSE",
+    "description": "INVALIDENSTRASSE",
+    "latitude": 52.53178,
+    "longitude": 13.38908,
+    "created_at": "2019-03-29T16:09:46.646Z",
+    "updated_at": "2019-03-29T16:09:46.646Z"
+}]
