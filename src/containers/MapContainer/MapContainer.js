@@ -3,10 +3,12 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { Col } from 'react-bootstrap';
 
 import './MapContainer.css';
+import { GOOGLE_MAP_KEY } from '../../shared/constants';
 
 class MapContainer extends Component {
 
     render() {
+        // initiate map markers
         const markers = this.props.markers.map((m, i) => (
             <Marker
                 key={i}
@@ -29,5 +31,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: ('AIzaSyBSkM37a0aRRhcwXdo9eeCTy7OohoIgy2g')
+    apiKey: (GOOGLE_MAP_KEY)
 })(MapContainer)

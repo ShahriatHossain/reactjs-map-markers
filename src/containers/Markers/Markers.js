@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Button, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import './Markers.css';
-import Marker from '../../components/Marker/Marker';
+import Marker from './Marker/Marker';
 import BoostrapModal from '../../components/UI/BoostrapModal/BootstrapModal';
 import MarkerForm from './MarkerForm/MarkerForm';
 import axios from '../../axios-markers';
@@ -11,19 +10,36 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Markers extends Component {
+    // initiate to check component is mounted or not
+    _isMounted = false;
+
+    // initiate state
     state = {
         show: false
     }
 
-    handleClose = () => {
-        this.setState({ show: false });
+    componentDidMount() {
+        this._isMounted = true;
     }
 
+    // close modal
+    handleClose = () => {
+        if (this._isMounted)
+            this.setState({ show: false });
+    }
+
+    // show modal
     handleShow = () => {
-        this.setState({ show: true });
+        if (this._isMounted)
+            this.setState({ show: true });
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     render() {
+        // assign markers
         const markers = this.props.markers.map((m, i) => (
             <Marker
                 key={i}
@@ -34,6 +50,7 @@ class Markers extends Component {
         // spinner will load while saving marker
         let spinner = this.props.loading ? <Spinner /> : null;
 
+        // marker create or edit form
         const markerForm = <MarkerForm />
 
         return (

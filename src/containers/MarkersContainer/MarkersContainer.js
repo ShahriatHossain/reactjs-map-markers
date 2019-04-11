@@ -11,23 +11,29 @@ import Markers from '../Markers/Markers';
 import MapContainer from '../MapContainer/MapContainer';
 
 class MarkersContainer extends Component {
+    // initiate to check component is mounted or not
+    _isMounted = false;
 
+    // initiate state
     state = {
         selectedMarker: null
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         // initiate markers from server
         this.props.onFetchMarkers();
     }
 
     // to dismiss error popup msg
     errorConfirmedHandler = () => {
-        this.setState({ error: null });
+        if (this._isMounted)
+            this.setState({ error: null });
     }
 
-    markerSelectedHandler = () => {
-
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     render() {
@@ -38,10 +44,12 @@ class MarkersContainer extends Component {
         // assign map container when when got 
         // response from server
         if (!this.props.loading) {
-            markers = <Row>
-                <Markers markers={this.props.markers} />
-                <MapContainer markers={this.props.markers} />
-            </Row>
+            markers = (
+                <Row>
+                    <Markers markers={this.props.markers} />
+                    <MapContainer markers={this.props.markers} />
+                </Row>
+            );
 
             // if error occurs load modal
             if (this.props.error) {
@@ -74,7 +82,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchMarkers: () => dispatch(actions.fetchMarkers()),
-        onfetchMarkersFail: (error) => dispatch(actions.fetchMarkersFail(error))
+        onfetchMarkersFail: (error) => dispatch(actions.transactionFail(error))
     };
 };
 

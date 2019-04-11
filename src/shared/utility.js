@@ -13,7 +13,7 @@ export const checkValidity = (value, rules) => {
     }
 
     if (rules.required) {
-        isValid = value.trim() !== '' && isValid;
+        isValid = String(value).trim() !== '' && isValid;
     }
 
     if (rules.minLength) {
@@ -30,7 +30,17 @@ export const checkValidity = (value, rules) => {
     }
 
     if (rules.isNumeric) {
-        const pattern = /^\d+$/;
+        const pattern = /^[1-9]\d*(\.\d+)?$/;
+        isValid = pattern.test(value) && isValid
+    }
+
+    if (rules.lat) {
+        const pattern = /^(\+|-)?((\d((\.)|\.\d{1,6})?)|(0*?[0-8]\d((\.)|\.\d{1,6})?)|(0*?90((\.)|\.0{1,6})?))$/;
+        isValid = pattern.test(value) && isValid
+    }
+
+    if (rules.long) {
+        const pattern = /^(\+|-)?((\d((\.)|\.\d{1,6})?)|(0*?\d\d((\.)|\.\d{1,6})?)|(0*?1[0-7]\d((\.)|\.\d{1,6})?)|(0*?180((\.)|\.0{1,6})?))$/;
         isValid = pattern.test(value) && isValid
     }
 

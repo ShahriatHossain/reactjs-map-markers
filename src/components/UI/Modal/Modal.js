@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import classes from './Modal.css';
+import './Modal.css';
 import Backdrop from '../Backdrop/Backdrop';
 
 class Modal extends Component {
@@ -10,8 +10,8 @@ class Modal extends Component {
     }
 
     render() {
-        const modalClasses = this.props.show ? [classes.Modal, classes.Show].join(' ')
-            : [classes.Modal, classes.Hide].join(' ');
+        const modalClasses = this.props.show ? ['Modal', 'Show'].join(' ')
+            : ['Modal', 'Hide'].join(' ');
 
         return (
             <Fragment>

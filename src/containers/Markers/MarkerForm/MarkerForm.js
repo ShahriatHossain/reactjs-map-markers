@@ -9,6 +9,7 @@ import * as actions from '../../../store/actions/index';
 import { updateObject, checkValidity } from '../../../shared/utility';
 
 class MarkerForm extends Component {
+    // initiate form
     state = {
         markerForm: {
             name: {
@@ -17,11 +18,13 @@ class MarkerForm extends Component {
                     type: 'text',
                     placeholder: 'Name'
                 },
-                value: '',
+                value: this.getDefaultValue('name'),
                 validation: {
                     required: true
                 },
-                valid: false,
+                valid: checkValidity(this.getDefaultValue('name'), {
+                    required: true
+                }),
                 touched: false
             },
             description: {
@@ -30,11 +33,13 @@ class MarkerForm extends Component {
                     type: 'text',
                     placeholder: 'Description'
                 },
-                value: '',
+                value: this.getDefaultValue('description'),
                 validation: {
                     required: false
                 },
-                valid: false,
+                valid: checkValidity(this.getDefaultValue('description'), {
+                    required: false
+                }),
                 touched: false
             },
             latitude: {
@@ -43,12 +48,16 @@ class MarkerForm extends Component {
                     type: 'text',
                     placeholder: 'Latitude'
                 },
-                value: '',
+                value: this.getDefaultValue('latitude'),
                 validation: {
                     required: true,
-                    isNumeric: true
+                    isNumeric: true,
+                    lat: true
                 },
-                valid: false,
+                valid: checkValidity(this.getDefaultValue('latitude'), {
+                    required: true,
+                    isNumeric: true
+                }),
                 touched: false
             },
             longitude: {
@@ -57,45 +66,82 @@ class MarkerForm extends Component {
                     type: 'text',
                     placeholder: 'Longitude'
                 },
-                value: '',
+                value: this.getDefaultValue('longitude'),
                 validation: {
                     required: true,
-                    isNumeric: true
+                    isNumeric: true,
+                    long: true
                 },
-                valid: false,
+                valid: checkValidity(this.getDefaultValue('longitude'), {
+                    required: true,
+                    isNumeric: true
+                }),
                 touched: false
             },
         },
-        formIsValid: false
+        formIsValid: this.checkFormIsEditMode()
     }
 
+    // to check form is edit mode or not
+    checkFormIsEditMode() {
+        let valueExist = false;
+
+        // return false if no marker for editing
+        if (!this.props.data) return valueExist;
+
+        // checking if any of the marker properties has value or not
+        const keys = Object.keys(this.props.data);
+        keys.map(k => {
+            if (k !== 'id') {
+                valueExist = this.getDefaultValue(k) !== '';
+            }
+            return valueExist;
+        });
+
+        return valueExist;
+    }
+
+    // get default value from marker or empty
+    getDefaultValue(key) {
+        return this.props.data ? this.props.data[key] : '';
+    }
+
+    // marker save handler
     saveHandler = (event) => {
+        // prevent automatica submission
         event.preventDefault();
 
+        // initiating form value
         const formData = {};
         for (let formElementIdentifier in this.state.markerForm) {
             formData[formElementIdentifier] = this.state.markerForm[formElementIdentifier].value;
         }
 
-        this.props.onSaveMarker(formData);
+        // checking has any marker id or not to decide as edit 
+        const markerId = this.props.data ? this.props.data.id : '';
+
+        this.props.onSaveMarker(formData, markerId);
 
     }
 
+    // will update input fields values for each change
     inputChangedHandler = (event, inputIdentifier) => {
-
+        // update form filed with new change
         const updatedFormElement = updateObject(this.state.markerForm[inputIdentifier], {
             value: event.target.value,
             valid: checkValidity(event.target.value, this.state.markerForm[inputIdentifier].validation),
             touched: true
         });
+        // replacing form filed with new change
         const updatedmarkerForm = updateObject(this.state.markerForm, {
             [inputIdentifier]: updatedFormElement
         });
-
+        // checking any rules break for each input fields
         let formIsValid = true;
         for (let inputIdentifier in updatedmarkerForm) {
             formIsValid = updatedmarkerForm[inputIdentifier].valid && formIsValid;
         }
+        // update state
         this.setState({ markerForm: updatedmarkerForm, formIsValid: formIsValid });
     }
 
@@ -107,6 +153,7 @@ class MarkerForm extends Component {
                 config: this.state.markerForm[key]
             });
         }
+        // generate form
         let form = (
             <Form onSubmit={this.saveHandler}>
                 {formElementsArray.map(formElement => (
@@ -121,7 +168,7 @@ class MarkerForm extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <Button variant="primary" type="submit" disabled={!this.state.formIsValid}>
-                    Submit
+                    Save changes
                 </Button>
             </Form>
         );
@@ -134,16 +181,10 @@ class MarkerForm extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        loading: state.marker.loading
-    }
-};
-
 const mapDispatchToProps = dispatch => {
     return {
-        onSaveMarker: (markerData) => dispatch(actions.saveMarker(markerData))
+        onSaveMarker: (markerData, editId) => dispatch(actions.saveMarker(markerData, editId))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(MarkerForm, axios));
+export default connect(null, mapDispatchToProps)(withErrorHandler(MarkerForm, axios));
