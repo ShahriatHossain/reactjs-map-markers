@@ -25,14 +25,14 @@ export function* saveMarkerSaga(action) {
       // edit marker
       data.location.id = action.markerId;
       response = yield axios.put(
-        `locations/${action.markerId}.json`,
+        `/api/v1/locations/${action.markerId}.json`,
         data
       );
 
     } else {
       // save marker to server
       response = yield axios.post(
-        "locations.json",
+        "/api/v1/locations.json",
         data
       );
 
@@ -55,7 +55,7 @@ export function* deleteMarkerSaga(action) {
   try {
     // delete marker from server
     const response = yield axios.delete(
-      `locations/${action.markerId}.json`
+      `/api/v1/locations/${action.markerId}.json`
     );
     // dispatch marker delete success action
     yield put(
@@ -74,7 +74,7 @@ export function* fetchMarkersSaga(action) {
 
   try {
     // retrieve data from server
-    const response = yield axios.get("locations.json");
+    const response = yield axios.get("/api/v1/locations.json");
     const results = response.data;
     const error = response.data.error;
 
