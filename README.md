@@ -27,7 +27,7 @@ https://github.com/ShahriatHossain/ruby-on-rails-api-markers
 I have integrated both unit and end to end testing using jest, enzyme and cypress. 
 To test e2e testing using cypress command is: 'yarn cypress' to open the cypress testing panel and 'yarn cypress:all' to test all test files in terminal console panel.
 
-To test unit testing using jest and enzyme is: 'yarn test'
+To test unit testing using jest and enzyme command is: 'yarn test'
 
 ## Configuration
 Please find axios-markers.js file in the project to set api base url to access api using axios.
