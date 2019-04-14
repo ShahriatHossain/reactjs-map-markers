@@ -7,22 +7,32 @@ const withErrorHandler = (WrappedComponent, axios) => {
         constructor(props) {
             super(props);
 
+            // initiate to check component is mounted or not
+            this._isMounted = false;
+
             this.state = {
                 error: null
             };
 
             // add req an resp interceptor to fire globally 
             this.reqInterceptor = axios.interceptors.request.use(req => {
-                this.setState({ error: null });
+                if (this._isMounted)
+                    this.setState({ error: null });
                 return req;
             });
             this.resInterceptor = axios.interceptors.response.use(res => res, error => {
-                this.setState({ error: error });
+                if (this._isMounted)
+                    this.setState({ error: error });
             });
         }
 
+        componentDidMount() {
+            this._isMounted = true;
+        }
 
         componentWillUnmount() {
+            this._isMounted = false;
+
             // remove interceptor on component unmount
             axios.interceptors.request.eject(this.reqInterceptor);
             axios.interceptors.response.eject(this.resInterceptor);
@@ -30,7 +40,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
         // initiat error null when modal dismissed
         errorConfirmedHandler = () => {
-            this.setState({ error: null });
+            if (this._isMounted)
+                this.setState({ error: null });
         }
 
         render() {

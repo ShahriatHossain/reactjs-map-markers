@@ -7,6 +7,9 @@ import './MapContainer.css';
 import { GOOGLE_MAP_KEY } from '../../shared/constants';
 
 export class MapContainer extends Component {
+    // initiate to check component is mounted or not
+    _isMounted = false;
+
     // initiates state
     state = {
         showingInfoWindow: false,
@@ -14,13 +17,23 @@ export class MapContainer extends Component {
         selectedPlace: {}
     }
 
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     // clicking on marker to show pop up
     onMarkerClick = (props, marker, e) => {
-        this.setState({
-            selectedPlace: props,
-            activeMarker: marker,
-            showingInfoWindow: true
-        });
+        if (this._isMounted) {
+            this.setState({
+                selectedPlace: props,
+                activeMarker: marker,
+                showingInfoWindow: true
+            });
+        }
     }
 
     render() {

@@ -9,6 +9,9 @@ import * as actions from '../../../store/actions/index';
 import { updateObject, checkValidity } from '../../../shared/utility';
 
 class MarkerForm extends Component {
+    // initiate to check component is mounted or not
+    _isMounted = false;
+
     // initiate form
     state = {
         markerForm: {
@@ -82,6 +85,14 @@ class MarkerForm extends Component {
         formIsValid: this.checkFormIsEditMode()
     }
 
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     // to check form is edit mode or not
     checkFormIsEditMode() {
         let valueExist = false;
@@ -142,7 +153,8 @@ class MarkerForm extends Component {
             formIsValid = updatedmarkerForm[inputIdentifier].valid && formIsValid;
         }
         // update state
-        this.setState({ markerForm: updatedmarkerForm, formIsValid: formIsValid });
+        if (this._isMounted)
+            this.setState({ markerForm: updatedmarkerForm, formIsValid: formIsValid });
     }
 
     render() {
