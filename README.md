@@ -1,13 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Challenge Requirements
-You are tasked with developing an prototypical solution for displaying the collected data to our test users inside of a web browser. The objective is to give them an instant overview over the current health and activity of the installed machines.
-
-## Applicaton Workflow
 The assignment task consists of two parts. First need to build a simple React application that
 shows a map and markers on it. A user should be able to view, create, edit and delete this markers.
 All the changes should be immediately visible on the map. The second part is to actually build the
-backend API in Ruby for allowing these CRUD operations for markers
+backend API in Ruby for allowing these CRUD operations for markers.
+
+## Applicaton Workflow
+After starting the app the landing page will come with Add Map button on the left and google map on the right. User can add marker clicking on Add Map button, a pop up will open with input fields and after clicking on Save Changes button it will save the marker and will be listing new marker on the left panel and also on google map. User can edit or delete marker which will be reflecting on marker list and also google map simultaneously.
 
 ## Packages Used
 Redux,
