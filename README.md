@@ -1,6 +1,40 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## This Application is in under construction
+## Challenge Requirements
+The assignment task consists of two parts. First need to build a simple React application that
+shows a map and markers on it. A user should be able to view, create, edit and delete this markers.
+All the changes should be immediately visible on the map. The second part is to actually build the
+backend API in Ruby for allowing these CRUD operations for markers.
+
+## Applicaton Workflow
+After starting the app the landing page will come with Add Map button on the left and google map on the right. User can add marker clicking on Add Map button, a pop up will open with input fields and after clicking on Save Changes button it will save the marker and will be listing new marker on the left panel and also on google map. User can edit or delete marker which will be reflecting on marker list and also google map simultaneously.
+
+## Packages Used
+Redux,
+Redux-Saga,
+Lodash,
+Cypress,
+Jest,
+Enzyme,
+React-Bootstrap,
+Google-Maps-React
+
+## Notes
+This react app has dependency with the ruby on rails api that I have created here: 
+https://github.com/ShahriatHossain/ruby-on-rails-api-markers
+
+## Testing
+I have integrated both unit and end to end testing using jest, enzyme and cypress. 
+To test e2e testing using cypress command is: 'yarn cypress' to open the cypress testing panel and 'yarn cypress:all' to test all test files in terminal console panel.
+
+To test unit testing using jest and enzyme command is: 'yarn test'
+
+## Configuration
+Please find axios-markers.js file in the project to set api base url to access api using axios.
+
+Please find cypress.json file in the project to set app base url for e2e testing.
+
+Please find constants.js file in the project to set GOOGLE MAP KEY.
 
 ## Available Scripts
 
@@ -28,38 +62,6 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
 ### Deployment
 
