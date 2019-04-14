@@ -9,7 +9,7 @@ import axios from '../../axios-markers';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import Spinner from '../../components/UI/Spinner/Spinner';
 
-class Markers extends Component {
+export class Markers extends Component {
     // initiate to check component is mounted or not
     _isMounted = false;
 

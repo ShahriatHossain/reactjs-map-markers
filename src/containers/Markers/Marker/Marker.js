@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Col, Card, Button } from 'react-bootstrap';
 
 import axios from '../../../axios-markers';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
-import * as actions from '../../../store/actions/index';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import Modal from '../../../components/UI/Modal/Modal';
 import BoostrapModal from '../../../components/UI/BoostrapModal/BootstrapModal';
 import MarkerForm from '../MarkerForm/MarkerForm';
 import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation';
 
-class Marker extends Component {
+export class Marker extends Component {
     // initiate to check component is mounted or not
     _isMounted = false;
 

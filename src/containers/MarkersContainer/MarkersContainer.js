@@ -10,7 +10,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import Markers from '../Markers/Markers';
 import MapContainer from '../MapContainer/MapContainer';
 
-class MarkersContainer extends Component {
+export class MarkersContainer extends Component {
     // initiate to check component is mounted or not
     _isMounted = false;
 
