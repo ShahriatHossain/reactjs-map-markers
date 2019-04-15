@@ -13,16 +13,14 @@ describe('<Markers />', () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = shallow(<MarkersContainer onFetchMarkers={() => {}} />);
+        wrapper = shallow(<MarkersContainer loading={false} onFetchMarkers={() => { }} />);
     });
 
     it('should render <Markers />', () => {
-        wrapper.setProps({ loading: false });
         expect(wrapper.find(Markers)).toHaveLength(1);
     });
 
     it('should render <MapContainer />', () => {
-        wrapper.setProps({ loading: false });
         expect(wrapper.find(MapContainer)).toHaveLength(1);
     });
 });
