@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Challenge Requirements
+## Requirements
 The assignment task consists of two parts. First need to build a simple React application that
 shows a map and markers on it. A user should be able to view, create, edit and delete this markers.
 All the changes should be immediately visible on the map. The second part is to actually build the
